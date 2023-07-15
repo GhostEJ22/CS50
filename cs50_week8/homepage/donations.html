@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Donations to Ehlers-Danlos-Syndromes Research</title>
+        <script>
+            let saveFile = () => {
+            // Get the data from each element on the form.
+            const name = document.getElementById("txtName");
+            const connection = document.getElementById("txtConnection");
+            const recommend = document.getElementById("txtRecommend");
+            const email = document.getElementById("txtEmail");
+            const rating = document.getElementById("selRating");
+
+            // This variable stores all the data.
+            let data = "\r Name: " + name.value + " \r\n " + "Email: " + email.value + " \r\n " + "Connection: " + connection.value + " \r\n " + "Recommend: " + recommend.value + " \r\n " + "Rating: " + rating.value;
+            console.log(data); //printing form data into the console
+            // Convert the text to BLOB.
+            const textToBLOB = new Blob([data], { type: "text/plain" });
+            var filename = new Date();
+            var month =new Date(); //months from 1-12
+            month = month.getMonth();
+
+            var day = new Date();
+            var day = day.getUTCDate();
+
+            var year = new Date();
+            var year = year.getUTCFullYear();
+
+            newdate = year + "/" + month + "/" + day;
+            const sFileName = filename; // The file to save the data.
+
+            let newLink = document.createElement("a");
+            newLink.download = new Date();
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
+        };
+        </script>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="header container-fluid">
+                <img src="Zebra_Ribbon.png" alt="EDS Symbol" height="75" width="100" style="float:left" class = "img-fluid">
+                <h3>Ehlers-Danlos<br>Syndromes</h3>
+                <a class="navbar-brand" style="width: 20%" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="nav-link" href="index.html">Home</a>
+                      <a class="nav-link" href="history.html">History</a>
+                      <a class="nav-link" href="treatment.html">Treatment</a>
+                      <a class = "nav-link active" aria-current="page" href = "donations.html">Research donations</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="list left">
+            <ul>
+                <li>If you wish to donate, there are a few links you can use:
+                    <ul>
+                        <li><a href="https://www.ehlers-danlos.com/donating-to-research/">The Ehlers-Danlos Society.</a></li>
+                        <li><a href="https://www.edsrf.org/donation">Eherls-Danlos Syndrome Research Foundation</a></li>
+                    </ul>
+                </li>
+                <li>If you with to donate to research on one of the many EDS related diseases, POTS(Postural Orthostatic Tachycardia Syndrome), click here:
+                    <ul>
+                        <li><a href="https://www.dysautonomiainternational.org/page.php?ID=289">Dysautonomia Internatonal</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <ul>
+            <li class="list left">If you want to take a quick survery about the user experience on this website, just answer the questions below:</li>
+        </ul>
+        <form method="post">
+            <input type="text" id="txtName" placeholder="Enter your name" >
+            <input type="text" id="txtEmail" placeholder="Enter your email address" >
+            <h6 class = "padding" style="color:black;">What is your connection to EDS(Have it, know someone who has it, wanted to learn more, etc)</h6>
+            <input type="text" id="txtConnection" placeholder="Enter your connection" >
+            <h6 style="color:black;">Would you recommend this site to someone looking for more information on EDS(yes or no)</h6>
+            <input type="text" id="txtRecommend" placeholder="Enter your recommendation" >
+            <select id="selRating">
+                <option selected value="">-- On a scale of 1-5, what rating would you give this website? --</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+             </select>
+             <input type="button" id="bt" value="Save data to file" onclick="saveFile()" >
+        </form>
+
+
+    </body>
+</html>
+
