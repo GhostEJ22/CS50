@@ -1,0 +1,11 @@
+sort1 uses: Bubble
+
+How do you know?: Sorted text ran much faster than the other two, and since bubble has a best case scenario of n, it has to be bubble
+
+sort2 uses: Merge
+
+How do you know?: Numbers didn't vary between rand5000, reversed5000, and sorted5000, but it was significantly faster than sort3, so I think it is merge
+
+sort3 uses: Selection
+
+How do you know?: I know it is selection sort because random, reversed, and sorted all had the same run time, and since selection sort has the same time for best and worst case scenario, it has to be selection
