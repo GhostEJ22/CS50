@@ -1,0 +1,1 @@
+They would use this data to figure out what type of songs someone likes(which artist pops up the most, what type of music shows up the most, etc) and using that would make the wrap
